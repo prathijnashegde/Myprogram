@@ -1,0 +1,43 @@
+def number_to_words(num):
+   
+    num_words = [
+        "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+        "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    ]
+    tens_words = [
+        "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+    ]
+    
+    if num < 0 or num > 9999:
+        return "Number out of range"
+   
+    if num == 0:
+        return "zero"
+
+    words = ""
+  
+    if num >= 1000:
+        thousands = num // 1000
+        words += num_words[thousands] + " thousand "
+        num %= 1000
+        
+    if num >= 100:
+        hundreds = num // 100
+        words += num_words[hundreds] + " hundred "
+        num %= 100
+        
+    if num >= 20:
+        tens = num // 10
+        words += tens_words[tens] + " "
+        num %= 10
+        
+    if num > 0:
+        words += num_words[num]
+
+    return words
+
+num = int(input("Enter an integer number (0-9999): "))
+
+result = number_to_words(num)
+
+print(f"Equivalent words: {result}")
